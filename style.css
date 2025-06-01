@@ -1,0 +1,373 @@
+/* CSS Variables for theme colors */
+:root {
+    --color-background: #181a20;
+    --color-background-overlay: #101117;
+    --color-shadow: #0005;
+    --color-text: #e0e0e0;
+    --color-heading: #64b5f6;
+    --color-button-hover: #d7eafa;
+    --color-slider: #303440;
+}
+/* General body and heading styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    margin: 0;
+    text-align: center;
+}
+h1, h2 { color: var(--color-heading); }
+/* Title bar styling */
+.title {
+    background-color: var(--color-background-overlay);
+    padding: 20px 0 30px;
+    box-shadow: 0 4px 24px var(--color-shadow);
+}
+/* Main button styling */
+.button {
+    background-color: var(--color-heading);
+    color: var(--color-background);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background 0.25s;
+    box-shadow: 0 4px 24px var(--color-shadow);
+}
+.button:hover { background-color: var(--color-button-hover); }
+/* Close button for overlay */
+.button-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: color 0.25s;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+.button-close:hover { color: var(--color-button-hover); }
+/* Overlay for upload modal */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+}
+.overlay.active { display: flex; }
+.overlay-content {
+    background: var(--color-background-overlay);
+    padding: 40px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px var(--color-shadow);
+    text-align: center;
+    min-width: 300px;
+    position: relative;
+}
+/* Form group styling for upload form */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--color-heading);
+    border-radius: 6px;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-size: 1rem;
+    box-sizing: border-box;
+    box-shadow: 0 4px 24px var(--color-shadow);
+}
+/* Dropzone for file/image upload */
+.dropzone {
+    width: 100%;
+    padding: 32px;
+    border: 2px dashed var(--color-heading);
+    border-radius: 8px;
+    background: var(--color-background);
+    transition: background 0.25s, border-color 0.25s;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-align: center;
+    user-select: none;
+}
+.dropzone.dragover {
+    background: var(--color-dropzone-hover);
+    border-color: var(--color-button-hover);
+    color: var(--color-button-hover);
+}
+.dropzone input[type="file"] { display: none; }
+#dropzoneText {
+    display: inline-block;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#imagePreview {
+    max-width: 180px;
+    max-height: 180px;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+}
+/* Song list container */
+#songsList {
+    margin: 30px auto 0 auto;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+/* Song card styling */
+.song-card {
+    display: flex;
+    align-items: center;
+    background: var(--color-background-overlay);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px var(--color-shadow);
+    padding: 30px;
+    gap: 24px;
+}
+.song-cover {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 4px 24px var(--color-shadow);
+}
+.song-info {
+    flex: 1;
+    text-align: left;
+}
+.song-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-heading);
+    margin-top: 4px;
+}
+.song-author {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+.song-play {
+    width: 48px;
+    height: 48px;
+    border: none;
+    background: var(--color-heading);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.25s;
+    box-shadow: 0 4px 24px var(--color-shadow);
+}
+.song-play:hover { background: var(--color-button-hover); }
+.song-play-icon, .song-pause-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-background);
+}
+#playerBar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 90px;
+    background: var(--color-background-overlay);
+    box-shadow: 0 4px 24px var(--color-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    color: var(--color-text);
+    gap: 24px;
+}
+.player-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.player-cover {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #222;
+    box-shadow: 0 4px 24px var(--color-shadow);
+}
+.player-songinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+}
+.player-songname {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-heading);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    margin-bottom: 2px;
+}
+.player-songauthor {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    margin-top: 2px;
+}
+.player-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+}
+.player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 6px;
+}
+.player-play, .player-pause {
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: var(--color-heading);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.25s;
+    box-shadow: 0 4px 24px var(--color-shadow);
+}
+.player-play:hover, .player-pause:hover { background: var(--color-button-hover); }
+.player-play-icon, .player-pause-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-background);
+}
+.player-timeline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 320px;
+    max-width: 60vw;
+}
+.player-time {
+    font-size: 0.95rem;
+    width: 40px;
+    text-align: center;
+    color: var(--color-text);
+}
+/* Sliders for time and volume */
+.player-bar-range,
+.player-volume-range {
+    flex: 1;
+    width: 90px;
+    appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--color-slider);
+    outline: none;
+    transition: background 0.25s;
+}
+.player-bar-range::-webkit-slider-thumb,
+.player-volume-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-heading);
+    cursor: pointer;
+    box-shadow: 0 4px 24px var(--color-shadow);
+    border: none;
+    margin-top: -4px;
+    position: relative;
+    z-index: 2;
+}
+.player-bar-range:focus,
+.player-volume-range:focus { outline: none; }
+.player-bar-range::-webkit-slider-thumb:hover,
+.player-volume-range::-webkit-slider-thumb:hover { background: var(--color-button-hover); }
+.player-bar-range::-webkit-slider-runnable-track,
+.player-volume-range::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 2px;
+    background: transparent;
+}
+.player-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 120px;
+    justify-content: flex-end;
+}
+.player-volume-icon {
+    width: 22px;
+    height: 22px;
+    fill: var(--color-heading);
+}
+/* Firefox and IE slider styles for compatibility */
+.player-bar-range::-moz-range-thumb,
+.player-volume-range::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-heading);
+    cursor: pointer;
+    box-shadow: 0 4px 24px var(--color-shadow);
+    border: none;
+}
+.player-bar-range::-moz-range-progress,
+.player-volume-range::-moz-range-progress {
+    background-color: var(--color-heading);
+    height: 4px;
+    border-radius: 2px;
+}
+.player-bar-range::-moz-range-track,
+.player-volume-range::-moz-range-track {
+    background-color: var(--color-slider);
+    height: 4px;
+    border-radius: 2px;
+}
+.player-bar-range:focus::-webkit-slider-thumb,
+.player-volume-range:focus::-webkit-slider-thumb {
+    outline: none;
+}
+.player-bar-range::-ms-fill-lower,
+.player-volume-range::-ms-fill-lower {
+    background: var(--color-heading);
+}
+.player-bar-range::-ms-fill-upper,
+.player-volume-range::-ms-fill-upper {
+    background: var(--color-slider);
+}
+/* Volume percentage display */
+.player-volumepercentage {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    text-align: right;
+    width: 40px;
+}
